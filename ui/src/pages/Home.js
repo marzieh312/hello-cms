@@ -10,13 +10,13 @@ class Home extends React.Component {
     return(
       <div className={styles.Home}>
         <Query query={GET_HOME_CONTENT}>
-        {({ data, loading }) => {
+        {({ data: {homepage}, loading }) => {
 
-          if (loading || !data.homepage) {
+          if (loading || !homepage) {
             return <Loading />;
           }
 
-          const {heading, heroImageUrl, subheading} = data.homepage
+          const {heading, heroImageUrl, subheading} = homepage
 
           return (
             <div>

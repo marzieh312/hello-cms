@@ -15,9 +15,9 @@ const PanelItem = ({onClick, className, title}) => {
     </NavItem>
   )  
 }
-const RightPanel = ({onSelect, faqTitles, selectedFaqIndex}) => {
+const RightPanel = ({onSelect, faqs, selectedFaqIndex}) => {
   
-  const fqaEls = faqTitles.map((title, index) => 
+  const faqItems = faqs.map((item, index) =>
   {
     let className = classnames(styles.NavItem, {
       [styles.active]: !!(index === selectedFaqIndex),
@@ -30,16 +30,15 @@ const RightPanel = ({onSelect, faqTitles, selectedFaqIndex}) => {
     return (
       <PanelItem 
         key={index}
-        title = {title.title} 
+        title = {item.title}
         className={className} 
         onClick={onClickHandler}/>
     )
-  }
-)
+  })
 
   return (
     <Nav vertical className={styles.Nav}>
-      {fqaEls}
+      {faqItems}
     </Nav>
   )
 }

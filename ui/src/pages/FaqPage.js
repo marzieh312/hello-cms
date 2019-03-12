@@ -6,7 +6,6 @@ import {
   Row,
   Col
 } from 'reactstrap';
-import styles from './FaqPage.module.scss';
 import Loading from '../components/shared/Loading';
 import FaqSection from '../components/faq/FaqSection';
 import RightPanel from '../components/faq/RightPanel';
@@ -26,26 +25,25 @@ class FaqPage extends React.Component {
     return(
       <div>
         <Query query={GET_FAQ_CONTENT}>
-        {({ data, loading }) => {
+        {({ data: {faqs}, loading }) => {
 
-          if (loading || !data.faqs) {
+          if (loading || !faqs) {
             return <Loading />;
           }
-          const faqTitles = data.faqs;
-          const selectedFaq = faqTitles[this.state.selectedFaqIndex];
+
           return (
-            <div className={styles.FaqPage}>
+            <div>
               <Row>              
                 <Col md={4}>
                   <RightPanel 
-                    faqTitles={faqTitles} 
+                    faqs={faqs}
                     selectedFaqIndex={this.state.selectedFaqIndex}
                     onSelect={this.onSelectFaq}
                     />
                 </Col>
                 <Col md={8}>
                   <Container>
-                    <FaqSection faqItem={selectedFaq} />
+                    <FaqSection faqItem={faqs[this.state.selectedFaqIndex]} />
                   </Container>
                 </Col>
               </Row>
