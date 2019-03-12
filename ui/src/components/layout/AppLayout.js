@@ -49,7 +49,7 @@ class AppLayout extends React.Component {
             </Nav>
           </Collapse>
         </Navbar>
-        <Container style={{ paddingTop: 100}}>
+        <Container style={{ paddingTop: 70}}>
           {this.props.children}
         </Container>
       </div>

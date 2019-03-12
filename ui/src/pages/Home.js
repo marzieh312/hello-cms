@@ -1,18 +1,8 @@
 import React from 'react';
 import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
 import styles from './Home.module.scss';
 import { Link } from 'react-router-dom';
-
-const GET_HOME_CONTENT = gql`
-  {
-    homepage {
-      heading
-      subheading
-      heroImageUrl
-    }
-  }
-`;
+import { GET_HOME_CONTENT } from '../queries';
 
 class Home extends React.Component {
   render() {

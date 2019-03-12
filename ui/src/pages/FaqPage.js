@@ -1,31 +1,15 @@
 import React from 'react';
 import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
+import { GET_FAQ_CONTENT } from '../queries';
 import {
   Nav,
-  Navbar, 
-  NavbarBrand,
-  NavbarToggler,
   Container,
-  Collapse,
   NavItem,
-  NavLink,
   Row,
   Col
 } from 'reactstrap';
 import styles from './FaqPage.module.scss';
 import classnames from "classnames";
-
-const GET_FAQ_CONTENT = gql`
-  {
-    faqs {
-      title,
-      body
-    }
-  }
-`;
-
-
 
 class FaqPage extends React.Component {
   state = {
