@@ -26,29 +26,32 @@ class AppLayout extends React.Component {
 
   render() {
     return (
-      <div className={styles.appLayout}>
+      <div className={styles.AppLayout}>
         <Navbar color="light" light expand="md" fixed="top">
           <LinkContainer to="/">
-            <NavbarBrand href="" className="mr-auto">
+            <NavbarBrand href="">
               Hello CMS
             </NavbarBrand>
           </LinkContainer>
           <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
           <Collapse isOpen={this.state.collapsed} navbar>
-            <Nav className="mr-auto" navbar>
-              <NavItem>
-                <NavLink href="/">Home</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="/faqs">FAQ</NavLink>
-              </NavItem>
+            <Nav navbar>
+              <LinkContainer to="/">
+                <NavItem>
+                  <NavLink href="">Home</NavLink>
+                </NavItem>
+              </LinkContainer>
+              <LinkContainer to="/faqs">
+                <NavItem>
+                  <NavLink href="">FAQ</NavLink>
+                </NavItem>
+              </LinkContainer>
             </Nav>
           </Collapse>
         </Navbar>
         <Container style={{ paddingTop: 100}}>
           {this.props.children}
         </Container>
-    
       </div>
     )
   }

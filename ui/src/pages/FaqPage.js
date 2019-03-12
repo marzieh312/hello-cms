@@ -9,8 +9,13 @@ import {
   Container,
   Collapse,
   NavItem,
-  NavLink
+  NavLink,
+  Row,
+  Col
 } from 'reactstrap';
+import styles from './FaqPage.module.scss';
+import classnames from "classnames";
+
 const GET_FAQ_CONTENT = gql`
   {
     faqs {
@@ -19,6 +24,8 @@ const GET_FAQ_CONTENT = gql`
     }
   }
 `;
+
+
 
 class FaqPage extends React.Component {
   state = {
@@ -34,28 +41,46 @@ class FaqPage extends React.Component {
           if (loading || !data.faqs) {
             return <div>Loading ...</div>;
           }
-          const faqTitles = data.faqs
+          const faqTitles = data.faqs;
+
           const fqaEls = faqTitles.map((title, index) => 
-            (
-              <NavItem onClick={() => this.setState({selectedFaqIndex: index})}>
-              {title.title}
-              </NavItem>
-            )
+            {
+              let className = classnames(styles.NavItem, {
+                [styles.active]: !!(index === this.state.selectedFaqIndex),
+              });
+
+              return (
+                <NavItem 
+                  className={className}
+                  onClick={() => this.setState({selectedFaqIndex: index})}>
+                      {title.title}
+                </NavItem>
+              )
+            }
           )
-          const selectedFaq = faqTitles[this.state.selectedFaqIndex]
+          const selectedFaq = faqTitles[this.state.selectedFaqIndex];
+          // Here I assumed that the cms always returns the secure data so no need to purify it
+          const createMarkup = () => ({
+            __html: selectedFaq.body
+          });
+
           return (
-            <div>
-              <Nav vertical>
-                {fqaEls}
-              </Nav>
-              <Container>
-                <div>
-                  <h1>{selectedFaq.title}</h1>
-                  <p>
-                    {selectedFaq.body}
-                  </p>
-                </div>
-              </Container>
+            <div className={styles.FaqPage}>
+            <Row>              
+              <Col md={4}>
+                <Nav vertical className={styles.Nav}>
+                  {fqaEls}
+                </Nav>
+              </Col>
+              <Col md={8}>
+                <Container>
+                  <div>
+                    <h1>{selectedFaq.title}</h1>
+                    <div dangerouslySetInnerHTML={createMarkup()} />
+                  </div>
+                </Container>
+                </Col>
+              </Row>
             </div>
           );
         }}

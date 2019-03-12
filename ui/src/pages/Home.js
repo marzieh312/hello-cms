@@ -1,6 +1,8 @@
 import React from 'react';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
+import styles from './Home.module.scss';
+import { Link } from 'react-router-dom';
 
 const GET_HOME_CONTENT = gql`
   {
@@ -15,7 +17,7 @@ const GET_HOME_CONTENT = gql`
 class Home extends React.Component {
   render() {
     return(
-      <div>
+      <div className={styles.Home}>
         <Query query={GET_HOME_CONTENT}>
         {({ data, loading }) => {
 
@@ -30,6 +32,7 @@ class Home extends React.Component {
               <h1>{heading}</h1>
               <img src={heroImageUrl} alt="hero logo"/>
               <p>{subheading}</p>
+              <Link to="/faqs">Learn more ...</Link>
             </div>
           );
         }}
