@@ -30,13 +30,13 @@ class FaqPage extends React.Component {
           if (loading || !faqs) {
             return <Loading />;
           }
-
+          
           return (
             <div>
               <Row>              
                 <Col md={4}>
                   <RightPanel 
-                    faqs={faqs}
+                    faqs={faqs} 
                     selectedFaqIndex={this.state.selectedFaqIndex}
                     onSelect={this.onSelectFaq}
                     />
