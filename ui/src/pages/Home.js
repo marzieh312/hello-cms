@@ -3,6 +3,7 @@ import { Query } from 'react-apollo';
 import styles from './Home.module.scss';
 import { Link } from 'react-router-dom';
 import { GET_HOME_CONTENT } from '../queries';
+import Loading from '../components/shared/Loading';
 
 class Home extends React.Component {
   render() {
@@ -12,7 +13,7 @@ class Home extends React.Component {
         {({ data, loading }) => {
 
           if (loading || !data.homepage) {
-            return <div>Loading ...</div>;
+            return <Loading />;
           }
 
           const {heading, heroImageUrl, subheading} = data.homepage

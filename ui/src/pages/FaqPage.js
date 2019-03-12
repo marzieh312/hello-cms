@@ -10,6 +10,7 @@ import {
 } from 'reactstrap';
 import styles from './FaqPage.module.scss';
 import classnames from "classnames";
+import Loading from '../components/shared/Loading';
 
 class FaqPage extends React.Component {
   state = {
@@ -23,10 +24,9 @@ class FaqPage extends React.Component {
         {({ data, loading }) => {
 
           if (loading || !data.faqs) {
-            return <div>Loading ...</div>;
+            return <Loading />;
           }
           const faqTitles = data.faqs;
-
           const fqaEls = faqTitles.map((title, index) => 
             {
               let className = classnames(styles.NavItem, {
