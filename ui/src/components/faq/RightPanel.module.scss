@@ -1,0 +1,15 @@
+.Nav {
+  .NavItem {
+    padding: 1rem;
+    color: #007bff;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    &:hover, &:active {
+      text-decoration: underline;
+    }
+
+    &.active {
+      color: #007b88;
+    }
+  }
+}
