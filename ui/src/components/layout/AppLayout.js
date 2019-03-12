@@ -40,12 +40,12 @@ class AppLayout extends React.Component {
                 <NavLink href="/">Home</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/faq">FAQ</NavLink>
+                <NavLink href="/faqs">FAQ</NavLink>
               </NavItem>
             </Nav>
           </Collapse>
         </Navbar>
-        <Container>
+        <Container style={{ paddingTop: 100}}>
           {this.props.children}
         </Container>
     

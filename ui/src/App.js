@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import AppLayout from './components/layout/AppLayout';
 import Home from './pages/Home';
+import FaqPage from './pages/FaqPage';
 import './App.css';
 
 class App extends Component {
@@ -10,8 +11,7 @@ class App extends Component {
       <Router>
         <AppLayout>
           <Switch>
-            {/* <Route exact path='/location/:woeid' component={LocationDetails} /> */}
-            {/* <Route path='/search' component={SearchResults} /> */}
+            <Route path='/faqs' component={FaqPage} />
             <Route path="/" component={Home} />
           </Switch>
         </AppLayout>
