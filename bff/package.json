@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npm-run-all --parallel dev:*",
-    "dev:api": "nodemon --exec 'babel-node index.js'",
-    "dev:json": "json-server --watch cms-data.json"
+    "start": "npm-run-all --parallel start:*",
+    "start:api": "nodemon --exec 'babel-node index.js'",
+    "start:json": "json-server --watch cms-data.json"
   },
   "author": "",
   "license": "ISC",
