@@ -10,11 +10,11 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 
-const GITHUB_BASE_URL = 'http://localhost:3600/graphql';
+const HELLO_CMS_GRAPHQL_BASE_URL = 'http://localhost:3600/graphql';
 
 
 const httpLink = new HttpLink({
-  uri: GITHUB_BASE_URL,
+  uri: HELLO_CMS_GRAPHQL_BASE_URL,
 });
 
 const cache = new InMemoryCache();
